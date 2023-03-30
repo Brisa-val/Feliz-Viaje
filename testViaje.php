@@ -49,7 +49,7 @@ include "Viaje.php";
       case 1:
          if(count($arregloViaje)!=0){
             foreach ($arregloViaje as $objetoViaje) {
-               print_r($objetoViaje->info());
+               print_r($objetoViaje);
            }
             
          }else{
@@ -87,7 +87,7 @@ include "Viaje.php";
                if(count($arregloViaje)!=0){
                   foreach ($arregloViaje as $objetoViaje) {
                      echo "\n \t OPCIÓN ".$opcionAElegir."\n";
-                     print_r($objetoViaje->info());
+                     print_r($objetoViaje);
                      $opcionAElegir++;
                   }
                   $opcionModificar=0;
@@ -95,10 +95,10 @@ include "Viaje.php";
                   do{
                      echo "Elija una de las opciones : ";
                      $opcionModificar = trim(fgets(STDIN)); 
-                     if(0>$opcionModificar || $opcionModificar>=$opcionAElegir){
+                     if(0>$opcionModificar && $opcionModificar>=$opcionAElegir){
                         echo "Error: La opción a elejir tiene que estar entre 0 y ".($opcionAElegir-1)."\n";
                      }  
-                  }while(0>$opcionModificar || $opcionModificar>=$opcionAElegir);
+                  }while(0>$opcionModificar && $opcionModificar>=$opcionAElegir);
 
 
                   echo "¿Que datos desea modificar? \n";
