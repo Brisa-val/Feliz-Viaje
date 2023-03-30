@@ -28,7 +28,7 @@ class Viaje
         $salida.= "Pasajero" ." \n ";
         $salida.= "Nombre: " . $this->pasajero["Nombre"]." \n ";
         $salida.= "Apellido: " . $this->pasajero["Apellido"]." \n ";
-        $salida.= "Dni: " . $this->pasajero["Dni"]." \n ";
+        $salida.= "dni: " . $this->pasajero["dni"]." \n ";
         $salida.= "**********************" ." \n ";
 
         return $salida;
@@ -116,13 +116,13 @@ class Viaje
     {
         $this->pasajero["Nombre"]=$nombre;
         $this->pasajero["Apellido"]=$apellido;
-        $this->pasajero["Dni"]=$dni;
+        $this->pasajero["dni"]=$dni;
     }
     
     
 
-    public function addPasajeros($nombre,$apellido,$documento)
+    public function addPasajeros($nombre,$apellido,$dni)
     {
-       array_push($this->pasajero,array("nombre"=>$nombre,"apellido"=>$apellido,"documento"=>$documento));
+       array_push($this->pasajero,array("nombre"=>$nombre,"apellido"=>$apellido,"dni"=>$dni));
     }
 }
