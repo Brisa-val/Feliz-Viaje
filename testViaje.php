@@ -23,10 +23,11 @@ include "Viaje.php";
     newLine();
    }
    function mostrarMenu(){
-      newLine();
-      echo "Menu: \n";
+    newLine();
+    echo "Menu: \n";
     echo "1 - Mostrar \n";
-    echo "2 - Ingresar datos. \n";
+    echo "2 - Ingresar datos Viaje. \n";
+    echo "3 - ingresar datos Pasajeros. \n";
     echo "3 - Modificar \n";
     echo "4 - Salir.\n";
     newLine();
@@ -36,10 +37,14 @@ include "Viaje.php";
 
    mostrarBienvenida();
 
-   while($opcion!=4){
+   while($opcion!=5){
       mostrarMenu();
       $opcion = trim(fgets(STDIN));
       opcionElegida($opcion);
+   }
+
+    function addPasajero($nuevoViaje){
+      if(count($nuevoViaje->getPasajeros()) < $nuevoViaje->getMaximoPasajeros());
    }
 
    function opcionElegida($opcion){
@@ -65,42 +70,29 @@ include "Viaje.php";
          $destino = trim(fgets(STDIN));
          echo "Ingrese maximo de Pasajeros: ";
          $maximoPasajero = trim(fgets(STDIN));
-         echo "Datos del pasajero \n";
-         echo "Ingrese Nombre: ";
-         $nombre = trim(fgets(STDIN));
-         echo "Ingrese Apellido: ";
-         $apellido = trim(fgets(STDIN));
-         echo "Ingrese DNI: ";
-         $dni = trim(fgets(STDIN));
+         $array = array();
+         $viaje= new Viaje($codigo,$destino,$maximoPasajero,$array);
 
          $array =array(
             "Nombre" => $nombre,
             "Apellido"=> $apellido,
             "Dni"=>$dni);
          
-         $viaje= new Viaje($codigo,$destino,$maximoPasajero,$array);
          array_push($arregloViaje,$viaje);
          break;
       case 3:
                //Mustro los datos a mostrar
-               $opcionAElegir=0;
-               if(count($arregloViaje)!=0){
-                  foreach ($arregloViaje as $objetoViaje) {
-                     echo "\n \t OPCIÓN ".$opcionAElegir."\n";
-                     print_r($objetoViaje);
-                     $opcionAElegir++;
-                  }
-                  $opcionModificar=0;
-                  $largoArreglo=count($arregloViaje);
-                  do{
-                     echo "Elija una de las opciones : ";
-                     $opcionModificar = trim(fgets(STDIN)); 
-                     if(0>$opcionModificar && $opcionModificar>=$opcionAElegir){
-                        echo "Error: La opción a elejir tiene que estar entre 0 y ".($opcionAElegir-1)."\n";
-                     }  
-                  }while(0>$opcionModificar && $opcionModificar>=$opcionAElegir);
+               echo "datos del pasajero \n";
+               echo "ingrese nombre:";
+               $nombre =trim(fgets(STDIN));
+               echo "ingrese apellido:";
+               $apellido =trim(fgets(STDIN));
+               echo "ingrese DNI:";
+               $dni =trim(fgets(STDIN));
 
-
+               $viaje-> addPasajeros($nombre,$apellido,$dni);
+               break;
+      case 4:
                   echo "¿Que datos desea modificar? \n";
                   echo "1 - Código viaje. \n";
                   echo "2 - Destino \n";
