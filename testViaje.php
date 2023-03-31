@@ -9,9 +9,9 @@ include "Viaje.php";
       "Apellido"=> "alberto",
       "Dni"=>42448004);
    
-   $viaje= new Viaje(1,"Brasil",2,$array);
+   $Viaje= new Viaje(1,"Brasil",2,$array);
    
-   array_push($arregloViaje,$viaje);
+   array_push($arregloViaje,$Viaje);
    $opcion=1;
 
 
@@ -28,8 +28,8 @@ include "Viaje.php";
     echo "1 - Mostrar \n";
     echo "2 - Ingresar datos Viaje. \n";
     echo "3 - ingresar datos Pasajeros. \n";
-    echo "3 - Modificar \n";
-    echo "4 - Salir.\n";
+    echo "4 - Modificar \n";
+    echo "5 - Salir.\n";
     newLine();
     echo "ingrese el numero:  ";
 
@@ -73,11 +73,6 @@ include "Viaje.php";
          $array = array();
          $viaje= new Viaje($codigo,$destino,$maximoPasajero,$array);
 
-         $array =array(
-            "Nombre" => $nombre,
-            "Apellido"=> $apellido,
-            "Dni"=>$dni);
-         
          array_push($arregloViaje,$viaje);
          break;
       case 3:
@@ -107,67 +102,51 @@ include "Viaje.php";
                      case 1:
                         echo "Ingrese el nuevo código: ";
                         $nuevoCodigo = trim(fgets(STDIN));
-                        $arregloViaje[$opcionModificar]->setCodigo($nuevoCodigo);
+                        $arregloViaje[$opModificar]->setCodigo($nuevoCodigo);
                         break;
                      case 2:
                         echo "Ingrese el nuevo Destino: ";
                         $nuevoDestino = trim(fgets(STDIN));
-                        $arregloViaje[$opcionModificar]->setDestino($nuevoDestino);
+                        $arregloViaje[$opModificar]->setDestino($nuevoDestino);
                         break;
                      case 3:
                         echo "Ingrese Cantidad Maxima de pasajero: ";
                         $nuevoCantMaxPasajero = trim(fgets(STDIN));
-                        $arregloViaje[$opcionModificar]->setMaximoPasajeros($nuevoCantMaxPasajero);
+                        $arregloViaje[$opModificar]->setMaximoPasajeros($nuevoCantMaxPasajero);
                         break;
                      case 4:
                            echo "Ingrese el nuevo Nombre: ";
                            $modificarNombre = trim(fgets(STDIN));
 
-                           $arrePasajero=$arregloViaje[$opcionModificar]->getPasajero();
+                           $arrePasajero=$arregloViaje[$opModificar]->getPasajero();
                            $apellidoActual=$arrePasajero["Apellido"];
                            $dniActual=$arrePasajero["Dni"];
-                           $arregloViaje[$opcionModificar]->setPasajeros($modificarNombre,$apellidoActual,$dniActual);
+                           $arregloViaje[$opModificar]->setPasajeros($modificarNombre,$apellidoActual,$dniActual);
                            break;
                      case 5:
                            echo "Ingrese el nuevo Apellido: ";
                            $modificarApellido = trim(fgets(STDIN));
    
-                           $arrePasajero=$arregloViaje[$opcionModificar]->getPasajero();
+                           $arrePasajero=$arregloViaje[$opModificar]->getPasajero();
                            $nombreActual=$arrePasajero["Nombre"];
                            $dniActual=$arrePasajero["Dni"];
-                           $arregloViaje[$opcionModificar]->setPasajeros($nombreActual,$modificarApellido,$dniActual);
+                           $arregloViaje[$opModificar]->setPasajeros($nombreActual,$modificarApellido,$dniActual);
                            break;
                      case 6:
                            echo "Ingrese el nuevo Dni: ";
                            $modificarDni = trim(fgets(STDIN));
       
-                           $arrePasajero=$arregloViaje[$opcionModificar]->getPasajero();
+                           $arrePasajero=$arregloViaje[$opModificar]->getPasajero();
                            $nombreActual=$arrePasajero["Nombre"];
                            $apellidoActual=$arrePasajero["Apellido"];
                            
-                           $arregloViaje[$opcionModificar]->setPasajeros($nombreActual,$apellidoActual,$modificarDni);
+                           $arregloViaje[$opModificar]->setPasajeros($nombreActual,$apellidoActual,$modificarDni);
                            break;
                      default:
                      echo "Opción invalida \n";
-                  }  
-                  
-               }else{
+                  } 
                   echo "No hay datos para mostrar \n";
                }
 
-               
-
-
-               break;
-      case 4:
-
-         break;
-      default:
       echo "la opcion elegida no es valida";
       }
-
-   
-   
-   
-   
-}
