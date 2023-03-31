@@ -21,14 +21,14 @@ class Viaje
      */
     function __toString(){
     
-        $salida= "*****************" ." \n ";
+        $salida= "***********************" ." \n ";
         $salida.= "Codigo: " . $this->codigo." \n ";
         $salida.= "Destino: ". $this->destino." \n ";
         $salida.= "Maximo pasajero: ". $this->maximoPasajeros." \n ";
         $salida.= "Pasajero" ." \n ";
-        $salida.= "Nombre: " . $this->pasajero["Nombre"]." \n ";
-        $salida.= "Apellido: " . $this->pasajero["Apellido"]." \n ";
-        $salida.= "dni: " . $this->pasajero["dni"]." \n ";
+        //$salida.= "Nombre: " . $this->pasajero["Nombre"]." \n ";
+        //$salida.= "Apellido: " . $this->pasajero["Apellido"]." \n ";
+        //$salida.= "dni: " . $this->pasajero["dni"]." \n ";
         $salida.= "**********************" ." \n ";
 
         return $salida;
