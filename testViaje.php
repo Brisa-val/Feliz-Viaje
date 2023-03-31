@@ -9,9 +9,10 @@ include "Viaje.php";
       "Apellido"=> "alberto",
       "Dni"=>42448004);
    
-   $Viaje= new Viaje(1,"Brasil",2,$array);
+   Global $viaje;
+    $viaje= new Viaje(1,"Brasil",2,$array);
    
-   array_push($arregloViaje,$Viaje);
+   array_push($arregloViaje,$viaje);
    $opcion=1;
 
 
@@ -23,6 +24,7 @@ include "Viaje.php";
     newLine();
    }
    function mostrarMenu(){
+
     newLine();
     echo "Menu: \n";
     echo "1 - Mostrar \n";
@@ -31,6 +33,7 @@ include "Viaje.php";
     echo "4 - Modificar \n";
     echo "5 - Salir.\n";
     newLine();
+    
     echo "ingrese el numero:  ";
 
    }
@@ -49,12 +52,13 @@ include "Viaje.php";
 
    function opcionElegida($opcion){
    Global $arregloViaje;
+   $viaje = new Viaje(1,"brasil",2,$arregloViaje);
    switch ($opcion)
    {
       case 1:
          if(count($arregloViaje)!=0){
             foreach ($arregloViaje as $objetoViaje) {
-               print_r($objetoViaje);
+               echo ($objetoViaje);
            }
             
          }else{
