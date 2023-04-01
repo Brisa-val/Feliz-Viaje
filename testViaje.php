@@ -1,16 +1,16 @@
 <?php
 
-include "Viaje.php";
+include "viaje.php";
 
 
    $arregloViaje=array();
-   $array =array(
-      "Nombre" => "mateo",
-      "Apellido"=> "alberto",
-      "Dni"=>42448004);
+   $array =array(array(
+      "nombre" => "mateo",
+      "apellido"=> "alberto",
+      "dni"=>42448004));
    
-   Global $viaje;
-    $viaje= new Viaje(1,"Brasil",2,$array);
+      Global $viaje;
+      $viaje= new Viaje(1,"Brasil",2,$array);
    
    array_push($arregloViaje,$viaje);
    $opcion=1;
@@ -52,7 +52,8 @@ include "Viaje.php";
 
    function opcionElegida($opcion){
    Global $arregloViaje;
-   $viaje = new Viaje(1,"brasil",2,$arregloViaje);
+   $array = arregloDePasajeros();
+   $viaje= new Viaje(1,"Brasil",2,$array);
    switch ($opcion)
    {
       case 1:
@@ -74,7 +75,7 @@ include "Viaje.php";
          $destino = trim(fgets(STDIN));
          echo "Ingrese maximo de Pasajeros: ";
          $maximoPasajero = trim(fgets(STDIN));
-         $array = array();
+         $array = arregloDePasajeros();
          $viaje= new Viaje($codigo,$destino,$maximoPasajero,$array);
 
          array_push($arregloViaje,$viaje);
@@ -88,7 +89,7 @@ include "Viaje.php";
                $apellido =trim(fgets(STDIN));
                echo "ingrese DNI:";
                $dni =trim(fgets(STDIN));
-
+               $array =
                $viaje-> addPasajeros($nombre,$apellido,$dni);
                break;
       case 4:
@@ -154,3 +155,25 @@ include "Viaje.php";
 
       echo "la opcion elegida no es valida";
       }
+      function arregloDePasajeros() {
+        $pasajeros = array(
+            array(
+                'nombre' => 'Juan',
+                'apellido' => 'Pérez',
+                'dni' => 12345678
+            ),
+            array(
+                'nombre' => 'María',
+                'apellido' => 'García',
+                'dni' => 87654321
+            ),
+            array(
+                'nombre' => 'Pedro',
+                'apellido' => 'Rodríguez',
+                'dni' => 45678912
+            )
+            // ... más pasajeros
+        );
+        
+        return $pasajeros;
+    }
