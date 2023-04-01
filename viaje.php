@@ -7,7 +7,6 @@ class Viaje
     private int $maximoPasajeros;
     private array $pasajero = array();
     
-
     function __construct($codigo,$destino,$maximoPasajeros,$arrayPasajeros)
     {
         $this->codigo = $codigo;
@@ -26,9 +25,7 @@ class Viaje
         $salida.= "Destino: ". $this->destino." \n ";
         $salida.= "Maximo pasajero: ". $this->maximoPasajeros." \n ";
         $salida.= "Pasajero" ." \n ";
-        //$salida.= "Nombre: " . $this->pasajero["Nombre"]." \n ";
-        //$salida.= "Apellido: " . $this->pasajero["Apellido"]." \n ";
-        //$salida.= "dni: " . $this->pasajero["dni"]." \n ";
+        $salida.= $this->concatenarPasajeros();
         $salida.= "**********************" ." \n ";
 
         return $salida;
@@ -124,5 +121,22 @@ class Viaje
     public function addPasajeros($nombre,$apellido,$dni)
     {
        array_push($this->pasajero,array("nombre"=>$nombre,"apellido"=>$apellido,"dni"=>$dni));
+    }
+
+    function concatenarPasajeros() {
+        $datosPasajeros = $this->pasajero; 
+        $stringPasajeros = '';
+        $cont=1;
+        
+        foreach ($datosPasajeros as $datos) {
+            
+                $stringPasajeros .="\t ".$cont.") Nombre= ". $datos['nombre'] . ' Apellido= ' . $datos['apellido'] . ' DNI= '. $datos['dni'] ."\n";
+            $cont++;
+            
+            
+            
+        }
+        
+        return $stringPasajeros;
     }
 }
